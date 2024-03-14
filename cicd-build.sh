@@ -4,11 +4,8 @@ ROOT=$(pwd)
 
 cd "$APP"
 
-./gradlew clean
-./gradlew build
-./gradlew build --write-versions
-APP_VERSION=$(./gradlew properties -q | grep "version:" | awk '{print $2}')
-./gradlew build --write-versions
+APP_VERSION=$(./gradlew properties -q | grep "version:" | awk '{ sub("-SNAPSHOT", "", $2); print $2 }')
+./gradlew clean build
 
 git add build.gradle
 git commit -m "cicd: bump version ${APP}:${APP_VERSION}"
