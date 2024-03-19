@@ -19,6 +19,8 @@ dependencies {
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.quarkus:quarkus-junit5-mockito'
     testImplementation 'org.instancio:instancio-core:4.4.0'
+    annotationProcessor 'org.inferred:freebuilder:2.8.0'
+    compileOnly 'org.inferred:freebuilder:2.8.0'
 }
 
 group 'me.dio'

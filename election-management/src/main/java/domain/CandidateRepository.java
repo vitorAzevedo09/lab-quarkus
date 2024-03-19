@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * CandidateRepository
@@ -14,5 +15,7 @@ public interface CandidateRepository {
   }
 
   List<Candidate> findAll();
+
+  Optional<Candidate> findById(String id);
 
 }

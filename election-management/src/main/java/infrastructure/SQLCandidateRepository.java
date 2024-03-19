@@ -1,6 +1,7 @@
 package infrastructure;
 
 import java.util.List;
+import java.util.Optional;
 
 import domain.Candidate;
 import domain.CandidateRepository;
@@ -19,5 +20,10 @@ public class SQLCandidateRepository implements CandidateRepository {
   @Override
   public List<Candidate> findAll() {
     return List.of();
+  }
+
+  @Override
+  public Optional<Candidate> findById(String id) {
+    return Optional.empty();
   }
 }
