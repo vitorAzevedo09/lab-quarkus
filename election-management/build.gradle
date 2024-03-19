@@ -17,6 +17,8 @@ dependencies {
     implementation 'io.quarkus:quarkus-opentelemetry'
     implementation 'io.quarkus:quarkus-arc'
     testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.quarkus:quarkus-junit5-mockito'
+    testImplementation 'org.instancio:instancio-core:4.4.0'
 }
 
 group 'me.dio'
