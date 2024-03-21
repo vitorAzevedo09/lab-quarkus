@@ -1,20 +1,16 @@
 package domain;
 
+import org.inferred.freebuilder.FreeBuilder;
+
 import java.util.Optional;
 import java.util.Set;
 
-import org.inferred.freebuilder.FreeBuilder;
-
-/**
- * CandidateQuery
- */
 @FreeBuilder
 public interface CandidateQuery {
+    Optional<Set<String>> ids();
 
-  Optional<Set<String>> ids();
+    Optional<String> name();
 
-  Optional<String> name();
-
-  class Builder extends CandidateQuery_Builder {
-  }
+    class Builder extends CandidateQuery_Builder {
+    }
 }

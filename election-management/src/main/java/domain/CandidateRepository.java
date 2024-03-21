@@ -2,20 +2,21 @@ package domain;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
-/**
- * CandidateRepository
- */
 public interface CandidateRepository {
+    void save(List<Candidate> candidates);
+    default void save(Candidate candidate) {
+        save(List.of(candidate));
+    }
 
-  void save(List<Candidate> candidates);
+    List<Candidate> find(CandidateQuery query);
 
-  default void save(Candidate candidate) {
-    save(List.of(candidate));
-  }
+    default List<Candidate> findAll() {
+        return find(new CandidateQuery.Builder().build());
+    }
 
-  List<Candidate> findAll();
-
-  Optional<Candidate> findById(String id);
-
+    default Optional<Candidate> findById(String id) {
+        return find(new CandidateQuery.Builder().ids(Set.of(id)).build()).stream().findFirst();
+    }
 }

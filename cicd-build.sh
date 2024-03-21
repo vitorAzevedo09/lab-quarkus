@@ -4,10 +4,13 @@ ROOT=$(pwd)
 
 cd "$APP"
 
-APP_VERSION=$(./gradlew properties -q | grep "version:" | awk '{ sub("-SNAPSHOT", "", $2); print $2 }')
-./gradlew clean build
+./mvnw clean
+./mvnw versions:set -DremoveSnapshot
+APP_VERSION=$(./mvnw -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+./mvnw package
+./mvnw versions:set -DnextSnapshot
 
-git add build.gradle
+git add pom.xml
 git commit -m "cicd: bump version ${APP}:${APP_VERSION}"
 
 cd "$ROOT"
